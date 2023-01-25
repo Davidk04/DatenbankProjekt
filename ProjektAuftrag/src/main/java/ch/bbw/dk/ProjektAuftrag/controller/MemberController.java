@@ -2,25 +2,21 @@ package ch.bbw.dk.ProjektAuftrag.controller;
 
 import ch.bbw.dk.ProjektAuftrag.model.Member;
 import ch.bbw.dk.ProjektAuftrag.repository.MemberRepository;
+import ch.bbw.dk.ProjektAuftrag.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("api/member")
+@RequestMapping("api/v1/member")
 public class MemberController {
 
     @Autowired
-    private MemberRepository memberRepository;
+    private MemberService memberService;
 
     @GetMapping
     public List<Member> getAllEmployes(){
-        return (List<Member>) memberRepository.findAll();
-    }
-
-    @PostMapping
-    public Member createMember(@RequestBody Member member){
-        return memberRepository.save(member);
+        return memberService.findAllMembers();
     }
 }
