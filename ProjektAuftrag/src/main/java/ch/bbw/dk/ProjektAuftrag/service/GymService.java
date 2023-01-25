@@ -1,4 +1,4 @@
 package ch.bbw.dk.ProjektAuftrag.service;
 
-public class SplitMember {
+public class GymService {
 }
