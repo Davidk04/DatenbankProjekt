@@ -14,9 +14,26 @@ public class MemberController {
 
     @Autowired
     private MemberService memberService;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @GetMapping
-    public List<Member> getAllEmployes(){
+    public List<Member> getAllEmployesController(){
         return memberService.findAllMembers();
+    }
+
+    @PostMapping
+    public Member createMemberController(@RequestBody Member member){
+        return memberService.createMember(member);
+    }
+
+    @PutMapping("/{id}")
+    public Member updateMemberController(@RequestBody Member member, @PathVariable int id){
+        return memberService.updateMember(id, member);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteMemberController(@PathVariable int id){
+        memberService.deleteMember(id);
     }
 }

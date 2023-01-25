@@ -19,4 +19,17 @@ public class MemberService {
     public List<Member> findAllMembers() {
         return memberRepository.findAll();
     }
+
+    public Member createMember(Member member){
+        return memberRepository.save(member);
+    }
+
+    public Member updateMember(int id, Member member){
+        member.setId(id);
+        return memberRepository.save(member);
+    }
+
+    public void deleteMember(int id){
+        memberRepository.deleteById(id);
+    }
 }
