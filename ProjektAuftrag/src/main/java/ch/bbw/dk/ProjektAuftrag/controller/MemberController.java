@@ -1,18 +1,26 @@
 package ch.bbw.dk.ProjektAuftrag.controller;
 
 import ch.bbw.dk.ProjektAuftrag.model.Member;
-import ch.bbw.dk.ProjektAuftrag.service.MemberService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import ch.bbw.dk.ProjektAuftrag.repository.MemberRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
+@RequestMapping("api/member")
 public class MemberController {
 
-    private MemberService memberService;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @GetMapping
-    public Member getMember(@RequestParam Integer id){
-        return memberService.getMember(id);
+    public List<Member> getAllEmployes(){
+        return (List<Member>) memberRepository.findAll();
+    }
+
+    @PostMapping
+    public Member createMember(@RequestBody Member member){
+        return memberRepository.save(member);
     }
 }
