@@ -1,15 +1,21 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
-public class Subscription {
-    private int id;
-    private String title;
-    private int cost;
+import jakarta.persistence.*;
 
-    public Subscription(int id, String title, int cost) {
-        this.id = id;
-        this.title = title;
-        this.cost = cost;
-    }
+@Entity
+@Table(name = "subscription")
+@NamedQuery(name = "Subscription.findAll", query = "FROM Subscription")
+public class Subscription {
+    @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "cost")
+    private int cost;
 
     public int getId() {
         return id;

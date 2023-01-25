@@ -1,15 +1,21 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
-public class Gym {
-    private int id;
-    private String name;
-    private String location;
+import jakarta.persistence.*;
 
-    public Gym(int id, String name, String location) {
-        this.id = id;
-        this.name = name;
-        this.location = location;
-    }
+@Entity
+@Table(name = "gym")
+@NamedQuery(name = "Gym.findAll", query = "FROM Gym")
+public class Gym {
+    @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "location")
+    private String location;
 
     public int getId() {
         return id;

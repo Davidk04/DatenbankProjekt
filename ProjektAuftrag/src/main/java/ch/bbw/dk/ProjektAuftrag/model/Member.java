@@ -1,15 +1,21 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
-public class Member {
-    private int id;
-    private String name;
-    private int age;
+import jakarta.persistence.*;
 
-    public Member(int id, String name, int age) {
-        this.id = id;
-        this.name = name;
-        this.age = age;
-    }
+@Entity
+@Table(name = "member")
+@NamedQuery(name = "Member.findAll", query = "FROM Member")
+public class Member {
+    @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "age")
+    private int age;
 
     public int getId() {
         return id;

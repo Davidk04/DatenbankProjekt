@@ -1,15 +1,22 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
-public class Split {
-    private int id;
-    private String title;
-    private int days;
+import jakarta.persistence.*;
 
-    public Split(int id, String title, int days) {
-        this.id = id;
-        this.title = title;
-        this.days = days;
-    }
+@Entity
+@Table(name = "split")
+@NamedQuery(name = "Split.findAll", query = "FROM Split")
+public class Split {
+
+    @Id
+    @Column(name = "id", unique = true)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    private int id;
+
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "days")
+    private int days;
 
     public int getId() {
         return id;
