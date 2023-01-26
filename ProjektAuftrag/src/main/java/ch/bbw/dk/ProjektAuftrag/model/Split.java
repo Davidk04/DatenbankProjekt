@@ -21,11 +21,11 @@ public class Split {
     private int id;
 
     @Column(name = "title")
-    @Size(max=15, min=2)
+    @Size(max=15, min=2, message = "Not between 2-15")
     private String title;
 
     @Column(name = "days")
-    @Max(7)
+    @Max(value = 7, message = "max value is 7")
     private int days;
 
     @JsonIgnore

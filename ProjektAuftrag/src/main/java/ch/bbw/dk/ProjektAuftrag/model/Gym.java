@@ -13,11 +13,11 @@ public class Gym {
     private int id;
 
     @Column(name = "name")
-    @Size(max=15, min=2)
+    @Size(max=15, min=2, message="Not between 2-15")
     private String name;
 
     @Column(name = "location")
-    @Size(max=20, min=2)
+    @Size(max=20, min=2, message="Not between 2-20")
     private String location;
 
     public int getId() {

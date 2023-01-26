@@ -17,11 +17,11 @@ public class Subscription {
     private int id;
 
     @Column(name = "title")
-    @Size(max=15, min=2)
+    @Size(max=15, min=2, message = "Not between 2-15")
     private String title;
 
     @Column(name = "cost")
-    @Min(10)
+    @Min(value = 10, message = "Min value is 10")
     private int cost;
 
     @JsonIgnore

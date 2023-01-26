@@ -16,10 +16,10 @@ public class Member {
     private int id;
 
     @Column(name = "name")
-    @Size(max=15, min=2)
+    @Size(max=15, min=2, message = "Not between 2-15")
     private String name;
 
-    @Min(17)
+    @Min(value = 17, message = "age min is 17")
     @Column(name = "age")
     private int age;
 
