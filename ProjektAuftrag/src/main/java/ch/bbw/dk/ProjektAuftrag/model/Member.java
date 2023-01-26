@@ -17,6 +17,14 @@ public class Member {
     @Column(name = "age")
     private int age;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "split_id", insertable = true, updatable = true)
+    private Split split;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "sub_id", insertable = true, updatable = true)
+    private Subscription subscription;
+
     public int getId() {
         return id;
     }
@@ -39,5 +47,21 @@ public class Member {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public Split getSplit() {
+        return split;
+    }
+
+    public void setSplit(Split split) {
+        this.split = split;
+    }
+
+    public Subscription getSubscription() {
+        return subscription;
+    }
+
+    public void setSubscription(Subscription subscription) {
+        this.subscription = subscription;
     }
 }

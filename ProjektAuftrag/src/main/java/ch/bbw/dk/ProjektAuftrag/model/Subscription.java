@@ -1,6 +1,9 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "subscription")
@@ -16,6 +19,10 @@ public class Subscription {
 
     @Column(name = "cost")
     private int cost;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "subscription")
+    private List<Member> member;
 
     public int getId() {
         return id;
@@ -39,5 +46,13 @@ public class Subscription {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public List<Member> getMember() {
+        return member;
+    }
+
+    public void setMember(List<Member> member) {
+        this.member = member;
     }
 }

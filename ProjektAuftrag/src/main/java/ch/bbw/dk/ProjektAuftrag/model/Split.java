@@ -1,9 +1,14 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "split")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NamedQuery(name = "Split.findAll", query = "FROM Split")
 public class Split {
 
@@ -17,6 +22,10 @@ public class Split {
 
     @Column(name = "days")
     private int days;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "split")
+    private List<Member> member;
 
     public int getId() {
         return id;
@@ -40,5 +49,13 @@ public class Split {
 
     public void setDays(int days) {
         this.days = days;
+    }
+
+    public List<Member> getMember() {
+        return member;
+    }
+
+    public void setMember(List<Member> member) {
+        this.member = member;
     }
 }
