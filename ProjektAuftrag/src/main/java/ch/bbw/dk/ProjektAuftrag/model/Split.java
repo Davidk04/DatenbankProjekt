@@ -2,6 +2,9 @@ package ch.bbw.dk.ProjektAuftrag.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 import java.util.Set;
@@ -18,9 +21,11 @@ public class Split {
     private int id;
 
     @Column(name = "title")
+    @Size(max=15, min=2)
     private String title;
 
     @Column(name = "days")
+    @Max(7)
     private int days;
 
     @JsonIgnore

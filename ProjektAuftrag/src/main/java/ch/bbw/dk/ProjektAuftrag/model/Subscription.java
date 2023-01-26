@@ -2,6 +2,8 @@ package ch.bbw.dk.ProjektAuftrag.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 
@@ -15,9 +17,11 @@ public class Subscription {
     private int id;
 
     @Column(name = "title")
+    @Size(max=15, min=2)
     private String title;
 
     @Column(name = "cost")
+    @Min(10)
     private int cost;
 
     @JsonIgnore

@@ -1,6 +1,8 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.Size;
 
 import java.util.Collection;
 
@@ -14,8 +16,10 @@ public class Member {
     private int id;
 
     @Column(name = "name")
+    @Size(max=15, min=2)
     private String name;
 
+    @Min(17)
     @Column(name = "age")
     private int age;
 

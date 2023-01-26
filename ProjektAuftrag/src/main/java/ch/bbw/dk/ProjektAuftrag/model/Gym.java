@@ -1,6 +1,7 @@
 package ch.bbw.dk.ProjektAuftrag.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name = "gym")
@@ -12,12 +13,12 @@ public class Gym {
     private int id;
 
     @Column(name = "name")
+    @Size(max=15, min=2)
     private String name;
 
     @Column(name = "location")
+    @Size(max=20, min=2)
     private String location;
-
-
 
     public int getId() {
         return id;
