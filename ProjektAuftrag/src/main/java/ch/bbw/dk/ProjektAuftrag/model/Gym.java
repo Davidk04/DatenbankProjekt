@@ -17,6 +17,8 @@ public class Gym {
     @Column(name = "location")
     private String location;
 
+
+
     public int getId() {
         return id;
     }

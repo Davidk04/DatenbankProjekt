@@ -2,6 +2,8 @@ package ch.bbw.dk.ProjektAuftrag.model;
 
 import jakarta.persistence.*;
 
+import java.util.Collection;
+
 @Entity
 @Table(name = "member")
 @NamedQuery(name = "Member.findAll", query = "FROM Member")
@@ -24,6 +26,18 @@ public class Member {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "sub_id", insertable = true, updatable = true)
     private Subscription subscription;
+
+    @ManyToMany
+    @JoinTable(name = "member_gym", joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "gym_id", referencedColumnName = "id"))
+    private Collection<Gym> gyms;
+
+    public Collection<Gym> getGyms() {
+        return gyms;
+    }
+
+    public void setGyms(Collection<Gym> gyms) {
+        this.gyms = gyms;
+    }
 
     public int getId() {
         return id;
